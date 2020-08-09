@@ -12,22 +12,12 @@ namespace ServerSidePaginationUsingSP.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Employee
     {
-        public int UserId { get; set; }
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
-        public string Email_Address { get; set; }
-        public string Description { get; set; }
-        public string Password { get; set; }
-        public Nullable<System.DateTime> Created_Date { get; set; }
-        public Nullable<int> RoleId { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Zip { get; set; }
-        public Nullable<int> Company { get; set; }
-        public string Image_Path { get; set; }
+        public int EmployeeID { get; set; }
+        public string Name { get; set; }
+        public string Department { get; set; }
+        public string Branch { get; set; }
         public Nullable<bool> Is_Locked { get; set; }
         public Nullable<bool> Is_Active { get; set; }
         public Nullable<System.DateTime> Edit_Date { get; set; }

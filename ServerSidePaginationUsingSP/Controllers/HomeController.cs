@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 
 namespace ServerSidePaginationUsingSP.Controllers
 {
@@ -16,8 +18,8 @@ namespace ServerSidePaginationUsingSP.Controllers
         [HttpPost]
         public JsonResult GetDetails()
         {
-            DBFirstDemoEntities _context = new DBFirstDemoEntities();
-            List<GetUserDetails_Result> data = new List<GetUserDetails_Result>();
+            DBFirstDemoEntities1 _context = new DBFirstDemoEntities1();
+            List<GetEmployeeDetails_Result> data = new List<GetEmployeeDetails_Result>();
             var start = (Convert.ToInt32(Request["start"]));
             var Length = (Convert.ToInt32(Request["length"])) == 0 ? 10 : (Convert.ToInt32(Request["length"]));
             var searchvalue = Request["search[value]"] ?? "";
@@ -31,29 +33,23 @@ namespace ServerSidePaginationUsingSP.Controllers
                 switch (sortcoloumnIndex)
                 {
                     case 0:
-                        SortColumn = "First_Name";
+                        SortColumn = "Name";
                         break;
                     case 1:
-                        SortColumn = "Last_Name";
+                        SortColumn = "Department";
                         break;
                     case 2:
-                        SortColumn = "Email_Address";
-                        break;
-                    case 3:
-                        SortColumn = "Created_Date";
-                        break;
-                    case 4:
-                        SortColumn = "Role_Name";
+                        SortColumn = "Branch";
                         break;
                     default:
-                        SortColumn = "UserId";
+                        SortColumn = "EmployeeID";
                         break;
                 }
                 if (sortDirection == "asc")
                     SortOrder = "asc";
                 else
                     SortOrder = "desc";
-                data = _context.GetUserDetails(start, searchvalue, Length, SortColumn, sortDirection).ToList();
+                data = _context.GetEmployeeDetails(start, searchvalue, Length, SortColumn, sortDirection).ToList();
                 recordsTotal = data.Count > 0 ? data[0].TotalRecords : 0;
             }
             catch (Exception ex)

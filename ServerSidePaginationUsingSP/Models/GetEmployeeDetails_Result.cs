@@ -11,13 +11,12 @@ namespace ServerSidePaginationUsingSP.Models
 {
     using System;
     
-    public partial class GetUserDetails_Result
+    public partial class GetEmployeeDetails_Result
     {
-        public int UserId { get; set; }
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
-        public string Email_Address { get; set; }
-        public Nullable<System.DateTime> Created_Date { get; set; }
+        public int EmployeeID { get; set; }
+        public string Name { get; set; }
+        public string Department { get; set; }
+        public string Branch { get; set; }
         public int TotalRecords { get; set; }
     }
 }

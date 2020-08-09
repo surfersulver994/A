@@ -15,10 +15,10 @@ namespace ServerSidePaginationUsingSP.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class DBFirstDemoEntities : DbContext
+    public partial class DBFirstDemoEntities1 : DbContext
     {
-        public DBFirstDemoEntities()
-            : base("name=DBFirstDemoEntities")
+        public DBFirstDemoEntities1()
+            : base("name=DBFirstDemoEntities1")
         {
         }
     
@@ -27,9 +27,9 @@ namespace ServerSidePaginationUsingSP.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
     
-        public virtual ObjectResult<GetUserDetails_Result> GetUserDetails(Nullable<int> pageno, string filter, Nullable<int> pagesize, string sorting, string sortOrder)
+        public virtual ObjectResult<GetEmployeeDetails_Result> GetEmployeeDetails(Nullable<int> pageno, string filter, Nullable<int> pagesize, string sorting, string sortOrder)
         {
             var pagenoParameter = pageno.HasValue ?
                 new ObjectParameter("Pageno", pageno) :
@@ -51,7 +51,7 @@ namespace ServerSidePaginationUsingSP.Models
                 new ObjectParameter("SortOrder", sortOrder) :
                 new ObjectParameter("SortOrder", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserDetails_Result>("GetUserDetails", pagenoParameter, filterParameter, pagesizeParameter, sortingParameter, sortOrderParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetEmployeeDetails_Result>("GetEmployeeDetails", pagenoParameter, filterParameter, pagesizeParameter, sortingParameter, sortOrderParameter);
         }
     }
 }
