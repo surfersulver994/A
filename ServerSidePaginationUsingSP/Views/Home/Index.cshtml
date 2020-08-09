@@ -4,9 +4,9 @@
 <table id="data" class="table table-bordered">
     <thead>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Branch</th>
         </tr>
     </thead>
     <tbody></tbody>
@@ -29,14 +29,14 @@
 
             "columns": [
                 {
-                    "data": "First_Name", "name": "First_Name", "autoWidth": true,
+                    "data": "Name", "name": "Name", "autoWidth": true,
                     mRender: function (data, type, full) {
                         var id = data;
                         return "<p style='background-color:#090;color: white;text-align: center;'>" + id + "</p>";
                     }
                 }
-                , { "data": "Last_Name", "name": "Last_Name", "autoWidth": true }
-                , { "data": "Email_Address", "name": "Email_Address", "autoWidth": true }
+                , { "data": "Department", "name": "Department", "autoWidth": true }
+                , { "data": "Branch", "name": "Branch", "autoWidth": true }
             ]
         });
     }
